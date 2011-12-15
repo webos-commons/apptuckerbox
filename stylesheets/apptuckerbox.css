@@ -1,0 +1,253 @@
+/*
+ * Global Styles
+ */
+.scene-fade-top
+{
+	position: fixed; 
+	top: 0; 
+	z-index: 11000;
+	height: 30px; 
+	width: 100%;
+	background: url(../images/palm-default/scrollFade-top.png) top center repeat-x;
+	-webkit-palm-mouse-target: ignore;
+}
+.scene-fade-bottom
+{
+	position: fixed; 
+	bottom: 0; 
+	z-index: 11000;
+	height: 30px; 
+	width: 100%;
+	background: url(../images/palm-default/scrollFade-bottom.png) bottom center repeat-x;
+	-webkit-palm-mouse-target: ignore;
+}
+body.palm-dark .scene-fade-top
+{
+	background: url(../images/palm-dark/scrollFade-top.png) top center repeat-x;
+}
+body.palm-dark .scene-fade-bottom
+{
+	background: url(../images/palm-dark/scrollFade-bottom.png) bottom center repeat-x;
+}
+.palm-separator
+{
+  height: 2px;
+ /* margin: 0 -18px;*/
+  background: url(../images/palm-default/list-separator-light.png) bottom left repeat-x;
+}
+body.palm-dark .palm-separator
+{
+  background: url(../images/palm-dark/list-separator-dark.png) bottom left repeat-x;
+}
+.palm-page-header .title
+{
+	white-space: nowrap;
+	overflow: hidden;
+}
+.palm-page-header .spinner
+{
+	position: absolute;
+	top: 10px;
+	left: 12px;
+}
+
+
+/*
+ * Startup Scene Styles
+ */
+.startup #data .palm-divider.labeled .label
+{
+	text-transform: lowercase;
+}
+.startup #data
+{
+	font-size: 18px;
+}
+.startup #data .text
+{
+	padding-top: 4px;
+	padding-left: 17px;
+	padding-right: 15px;
+	padding-bottom: 10px;
+}
+.startup #data ul
+{
+	margin: 0px;
+	padding-left: 37px;
+	padding-right: 15px;
+	padding-bottom: 10px;
+}
+
+
+/*
+ * Main Scene Styles
+ */
+.main .palm-page-header-wrapper .icon
+{
+	width: 76px;
+	height: 75px;
+	background: url(../icon.png) center center no-repeat !important;
+}
+.main .palm-page-header-wrapper .title
+{
+	padding-left: 80px;
+}
+.main .palm-page-header-wrapper .title.main
+{
+	font-size: 30px;
+	padding-top: 5px;
+	padding-bottom: 0px;
+}
+.main .palm-page-header-wrapper .title.sub
+{
+	font-size: 14px;
+	padding-top: 0px;
+	margin-top: 0px;
+}
+.main .palm-page-header-wrapper .title.sub .version
+{
+	font-size: 12px;
+	color: #888;
+	padding-top: 2px;
+	padding-right: 15px;
+	float: right;
+	text-transform: lowercase;
+}
+.main .palm-list .palm-row
+{
+	clear: none;
+	float: left;
+	width: 161px;
+	background: url(../images/palm-default/list-separator-light-grid.png) bottom right no-repeat;
+	margin-bottom: -1px;
+	margin-right: -1px;
+}
+body.palm-dark .main .palm-list .palm-row
+{
+	background: url(../images/palm-dark/list-separator-dark-grid.png) bottom right no-repeat;
+}
+.main .palm-list .palm-row.selected
+{
+	width: 160px;
+	background: none;
+	margin-right: 0px;
+}
+body.palm-dark .main .palm-list .palm-row.selected
+{
+	background: none;
+}
+.main .palm-list .palm-row .title
+{
+	text-align: center;
+}
+.main .palm-row-wrapper.disabled .title
+{
+	color: #999;
+}
+
+
+/*
+ * item-display scene styles
+ */
+.item-display .palm-list-selector .title
+{
+	text-align: left;
+}
+
+/*
+ * Generic Form Styles
+ */
+.form .palm-row-wrapper .note
+{
+	clear: both;
+	padding-left: 10px;
+	font-style: italic;
+}
+.form .palm-row-wrapper .label.left
+{
+	padding-left: 6px;
+	-webkit-palm-mouse-target: ignore;
+}
+.form .palm-list-selector .label
+{
+	float: left;
+}
+.form .palm-list-selector .title
+{
+	text-align: right;
+}
+.form .palm-group.disabled
+{
+	opacity: 0.35;
+}
+.form .palm-row .title.right .unit
+{
+	float: right;
+	padding-left: 8px;
+	padding-top: 4px;
+	text-align: left;
+	color: #aaa;
+	font-size: 16px;
+}
+
+/*
+ * Help Scene Styles
+ */
+.help .list_scene
+{
+	position:relative;
+	left:48px;
+	top:10px;
+	width:32px; 
+	height:32px;
+	vertical-align:bottom;
+	padding: 0px 0px 0px 5px;
+	float:left;
+}
+.help .img_web
+{
+	position:relative;
+	left:8px;
+	top:10px;
+	width:32px; 
+	height:32px;
+	background: url(../images/help/application-web.png) no-repeat  bottom;
+	padding: 0px 0px 0px 5px;
+	float:left;
+}
+.help .img_email
+{
+	position:relative;
+	left:8px;
+	top:10px;
+	width:32px; 
+	height:32px;
+	background: url(../images/help/application-email.png) no-repeat bottom;
+	vertical-align:bottom;
+	padding: 0px 0px 0px 5px;
+	float:left;
+}
+.help .img_changelog
+{
+	position:relative;
+	left:8px;
+	top:10px;
+	width:32px; 
+	height:32px;
+	background: url(../images/help/scene-changelog.png) no-repeat  bottom;
+	padding: 0px 0px 0px 5px;
+	float:left;
+}
+.help #data
+{
+	padding: 10px;
+	font-size: 18px;
+}
+.help #data ul
+{
+	margin: 0px;
+	padding-top: 10px;
+	padding-left: 26px;
+	padding-right: 0px;
+	padding-bottom: 10px;
+}

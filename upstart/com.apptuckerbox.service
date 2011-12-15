@@ -1,0 +1,7 @@
+description "App Tuckerbox Service"
+
+start on stopped finish
+
+exec /var/usr/sbin/com.apptuckerbox.service
+
+respawn

@@ -1,0 +1,17 @@
+{
+	"title": "App Tuckerbox",
+	"id": "com.apptuckerbox.register",
+	"version": "1.0.0",
+	"release_date":	"16-December-2011",
+	"vendor": "App Tuckerbox",
+	"vendor_email":	"support@apptuckerbox.com",
+	"vendor_url": "http://www.apptuckerbox.com",
+	"type": "web",
+	"main": "index.html",
+	"icon": "icon.png",
+	"miniicon": "miniicon.png",
+	"removable": "true",
+	"noWindow": true,
+	"uiRevision": 2,
+	"noDeprecatedStyles": true
+}

@@ -1,0 +1,14 @@
+{
+  "role": {
+     "exeName":"/var/usr/sbin/com.apptuckerbox.service",
+     "type": "privileged",
+     "allowedNames": ["com.apptuckerbox.service"]
+  },
+  "permissions": [
+    {
+      "service":"com.apptuckerbox.service",
+      "inbound":["*"],
+      "outbound":["*"]
+    }
+  ]
+}
