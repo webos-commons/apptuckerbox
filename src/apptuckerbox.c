@@ -1,6 +1,5 @@
 /*=============================================================================
  Copyright (C) 2011 App Tuckerbox <http://www.apptuckerbox.com>
- All Rights Reserved.  This is unpublished confidential closed source software.
  =============================================================================*/
 
 #include <stdio.h>
