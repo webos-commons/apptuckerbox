@@ -11,6 +11,7 @@ function StartupAssistant(changelog)
     this.newMessages =
 	[
 	 // Don't forget the comma on all but the last entry
+	 { version: '1.0.1', log: [ 'Fixed https certificate installation on webOS 1.4.5 devices which was preventing registration' ] },
 	 { version: '1.0.0', log: [ 'First Public Release' ] }
 	 ];
 	

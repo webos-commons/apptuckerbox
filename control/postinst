@@ -43,8 +43,16 @@ mkdir -p /var/palm/event.d
 cp $APPS/usr/palm/applications/${PID}/upstart/${SID} /var/palm/event.d/${SID}
 
 # Install the certificate authority
-mkdir -p /var/ssl/trustedcerts
-cp $APPS/usr/palm/applications/${PID}/certs/preware-ca-bundle.crt /var/ssl/trustedcerts/397bdadc.0
+if grep PRODUCT_VERSION_STRING /etc/palm-build-info | grep 1.4.5 > /dev/null ; then
+    if ! grep Preware /etc/ssl/certs/ca-certificates.crt > /dev/null ; then
+	mount -o remount,rw /
+	cat $APPS/usr/palm/applications/${PID}/certs/preware-ca-bundle.crt >> /etc/ssl/certs/ca-certificates.crt
+	mount -o remount,ro /
+    fi
+else
+    mkdir -p /var/ssl/trustedcerts
+    cp $APPS/usr/palm/applications/${PID}/certs/preware-ca-bundle.crt /var/ssl/trustedcerts/397bdadc.0
+fi    
 
 # Start the service
 /sbin/start ${SID}
