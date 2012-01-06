@@ -3,7 +3,7 @@ function StartupAssistant(changelog)
 	this.justChangelog = changelog;
 	
     // on first start, this message is displayed, along with the current version message from below
-    this.firstMessage = $L('Here are some tips for first-timers:<ul><li>App Tuckerbox feed access is currently only available to qualified beta testers<li>If you have purchased at least 50 apps you receive automatic qualification</li><li>Please ensure your system clock is correct before attempting to register</li></ul>');
+    this.firstMessage = $L('Here are some tips for first-timers:<ul><li>Please ensure your system clock is correct before attempting to register</li><li>Loading the full palm-catalog feed on a Pre- or Pixi- with their limited memory will fail</li></ul>');
 	
     this.secondMessage = $L('We hope you enjoy being able to access your apps on your devices.<br>Please consider making a <a href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=YCEGAZVMADJVS\">donation</a> if you wish to show your appreciation.');
 	
@@ -11,6 +11,7 @@ function StartupAssistant(changelog)
     this.newMessages =
 	[
 	 // Don't forget the comma on all but the last entry
+	 { version: '1.0.2', log: [ 'Stable Release' ] },
 	 { version: '1.0.1', log: [ 'Fixed https certificate installation on webOS 1.4.5 devices which was preventing registration' ] },
 	 { version: '1.0.0', log: [ 'First Public Release' ] }
 	 ];
