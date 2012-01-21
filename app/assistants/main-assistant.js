@@ -50,6 +50,59 @@ function MainAssistant()
 		disabled: true
 	};
 	
+	this.feedLocaleSelectorModel = {
+		disabled: true,
+		choices: [
+	{label:"English (Australia)",	value:'en_AU'},
+	{label:"English (Canada)",		value:'en_CA'},
+	{label:"English (Germany)",		value:'en_DE'},
+	{label:"English (Spain)",		value:'en_ES'},
+	{label:"English (France)",		value:'en_FR'},
+	{label:"English (Hong Kong)",	value:'en_HK'},
+	{label:"English (Ireland)",		value:'en_IE'},
+	{label:"English (Mexico)",		value:'en_MX'},
+	{label:"English (New Zealand)",	value:'en_NZ'},
+	{label:"English (Singapore)",	value:'en_SG'},
+	{label:"English (UK)",			value:'en_GB'},
+	{label:"English (USA)",			value:'en_US'},
+	{label:"French (Canada)",		value:'fr_CA'},
+	{label:"French (France)",		value:'fr_FR'},
+	{label:"German (Germany)",		value:'de_DE'},
+	{label:"Spanish (Spain)",		value:'es_ES'},
+	{label:"Spanish (Mexico)",		value:'es_MX'},
+	{label:"Spanish (USA)",			value:'es_US'}
+				  ],
+	};
+
+	var locale = (Mojo.Locale.getCurrentLocale().substr(0,2) + "_" +
+				  Mojo.Locale.getCurrentLocale().substr(3,2).toUpperCase());
+
+	switch (locale) {
+	case 'en_AU':
+	case 'en_CA':
+	case 'en_DE':
+	case 'en_ES':
+	case 'en_FR':
+	case 'en_HK':
+	case 'en_IE':
+	case 'en_MX':
+	case 'en_NZ':
+	case 'en_SG':
+	case 'en_GB':
+	case 'en_US':
+	case 'fr_CA':
+	case 'fr_FR':
+	case 'de_DE':
+	case 'es_ES':
+	case 'es_MX':
+	case 'es_US':
+		this.feedLocaleSelectorModel.value = locale;
+		break;
+	default:
+		this.feedLocaleSelectorModel.value = "en_US";
+		break;
+	}
+
 	this.configureFeedsButtonModel = {
 		label: $L("Configure Preware Feeds"),
 		buttonClass: 'affirmative',
@@ -66,8 +119,6 @@ function MainAssistant()
 
 	this.palmProfile = false;
 	this.reloadPalmProfile = false;
-
-	this.locale = "en_US";
 
 	// These are calculated once when the deviceProfile, locationHost and palmProfile are loaded
 	this.username   = false;
@@ -119,6 +170,7 @@ MainAssistant.prototype.setup = function()
 
 	this.configureFeedsGroup = this.controller.get('configureFeedsGroup');
 	this.configureFeedsTitle = this.controller.get('configureFeedsTitle');
+	this.feedLocaleSelector = this.controller.get('feedLocaleSelector');
 	this.configureFeedsButton = this.controller.get('configureFeedsButton');
 
 	this.infoGroup = this.controller.get('infoGroup');
@@ -160,6 +212,7 @@ MainAssistant.prototype.setup = function()
 								this.refreshStatusButtonModel);
 	this.controller.listen(this.refreshStatusButton, Mojo.Event.tap, this.refreshStatusTapHandler);
 
+	this.controller.setupWidget('feedLocaleSelector', { label: $L("Locale") }, this.feedLocaleSelectorModel);
 	this.controller.setupWidget('configureFeedsButton', { type: Mojo.Widget.activityButton },
 								this.configureFeedsButtonModel);
 	this.controller.listen(this.configureFeedsButton, Mojo.Event.tap, this.configureFeedsTapHandler);
@@ -183,6 +236,8 @@ MainAssistant.prototype.activate = function()
 	this.controller.modelChanged(this.refreshStatusButtonModel);
 
 	this.configureFeedsGroup.style.display = 'none';
+	this.feedLocaleSelectorModel.disabled = true;
+	this.controller.modelChanged(this.feedLocaleSelectorModel);
 	this.configureFeedsButtonModel.disabled = true;
 	this.controller.modelChanged(this.configureFeedsButtonModel);
 
@@ -352,6 +407,8 @@ MainAssistant.prototype.checkRegistration = function()
 	this.controller.modelChanged(this.refreshStatusButtonModel);
 
 	this.configureFeedsGroup.style.display = 'none';
+	this.feedLocaleSelectorModel.disabled = true;
+	this.controller.modelChanged(this.feedLocaleSelectorModel);
 	this.configureFeedsButtonModel.disabled = true;
 	this.controller.modelChanged(this.configureFeedsButtonModel);
 
@@ -419,6 +476,8 @@ MainAssistant.prototype.isRegistered = function(payload)
 
 			this.configureFeedsGroup.style.display = '';
 			this.configureFeedsTitle.innerHTML = $L('Feed Configuration Available');
+			this.feedLocaleSelectorModel.disabled = false;
+			this.controller.modelChanged(this.feedLocaleSelectorModel);
 			this.configureFeedsButtonModel.disabled = false;
 			this.controller.modelChanged(this.configureFeedsButtonModel);
 		}
@@ -601,7 +660,7 @@ MainAssistant.prototype.configureFeedsTap = function()
 	var palmCatalog = ("src/gz palm-catalog https://"+
 					   encodeURIComponent(this.username)+":"+
 					   encodeURIComponent(this.password)+"@"+
-					   this.server+"/feeds/palm-catalog/"+this.locale);
+					   this.server+"/feeds/palm-catalog/"+this.feedLocaleSelectorModel.value);
 
 	this.overlay.show();
 	this.requestPalmService = TuckerboxService.putFile(this.putPalmCatalog.bind(this),
@@ -625,7 +684,7 @@ MainAssistant.prototype.putPalmCatalog = function(payload)
 	var palmWeb = ("src/gz palm-web https://"+
 				   encodeURIComponent(this.username)+":"+
 				   encodeURIComponent(this.password)+"@"+
-				   this.server+"/feeds/palm-web/"+this.locale);
+				   this.server+"/feeds/palm-web/"+this.feedLocaleSelectorModel.value);
 
 	this.requestPalmService = TuckerboxService.putFile(this.putPalmWeb.bind(this),
 													   palmWeb,
@@ -648,7 +707,7 @@ MainAssistant.prototype.putPalmWeb = function(payload)
 	var palmBeta = ("src/gz palm-beta https://"+
 					encodeURIComponent(this.username)+":"+
 					encodeURIComponent(this.password)+"@"+
-					this.server+"/feeds/palm-beta/"+this.locale);
+					this.server+"/feeds/palm-beta/"+this.feedLocaleSelectorModel.value);
 
 	this.requestPalmService = TuckerboxService.putFile(this.putPalmBeta.bind(this),
 													   palmBeta,

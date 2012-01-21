@@ -113,28 +113,9 @@ body.palm-dark .palm-separator
 	float: right;
 	text-transform: lowercase;
 }
-.main .palm-list .palm-row
+.main .palm-row-wrapper
 {
-	clear: none;
-	float: left;
-	width: 161px;
-	background: url(../images/palm-default/list-separator-light-grid.png) bottom right no-repeat;
-	margin-bottom: -1px;
-	margin-right: -1px;
-}
-body.palm-dark .main .palm-list .palm-row
-{
-	background: url(../images/palm-dark/list-separator-dark-grid.png) bottom right no-repeat;
-}
-.main .palm-list .palm-row.selected
-{
-	width: 160px;
-	background: none;
-	margin-right: 0px;
-}
-body.palm-dark .main .palm-list .palm-row.selected
-{
-	background: none;
+	height: 60px;
 }
 .main .palm-list .palm-row .title
 {
